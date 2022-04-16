@@ -7,12 +7,15 @@ const express = require('express'); //setting up express
 const app = express ();
 const PORT = process.env.PORT || 3001; // hiding the port to practice hiding environment variables
 const pokemon = require('./models/pokemon.js'); // pulls all of the pokemon data
+const methodOverride = require("method-override"); // YOU MUST DO THIS FOR PUT METHODS!!! SPENT # HRS TRYING TO FIGURE THIS OUT 
+// IM LEAVING NOTES SO I DONT FORGET NEXT TIME - ALSO DONT FORGET TO npm i method-override!!!!
 
 ////////////////////////////////////////////////////
 // Middleware
 ////////////////////////////////////////////////////
-app.use(express.urlencoded({extended: true})); // body parser
+app.use(express.urlencoded({extended: true})); // body parser - have to set to true to be able to create muti-level objects
 app.use("/static", express.static("public")); // files for public view & to use/link to other files.
+app.use(methodOverride("_method")); 
 
 ////////////////////////////////////////////////////
 // Routes
@@ -41,7 +44,6 @@ app.get('/pokemon/new/', (req, res) => {
 // CREATE Route
 // Add new pokemon to database and redirects back to homepage or the newly created pokemon
 app.post('/pokemon/', (req, res) => {
-	console.log(req.body)
 	pokemon.push(req.body)
 	res.redirect('/pokemon/');
 });
@@ -59,15 +61,25 @@ app.get('/pokemon/:id/', (req, res) => {
 
 // EDIT Route
 // Display Edit form for one Pokemon
-app.get('/pokemon/:id/');
+app.get('/pokemon/:id/edit', (req, res) => {
+	const id = req.params.id - 1;
+	res.render('pokemon_edit.ejs', {pokemonById : pokemon[id]});
+});
 
 // UPDATE Route
 // Update a particular pokemon's data then redirect to homepage or that pokemon
-app.put('/pokemon/:id/');
+app.put('/pokemon/:id/', (req, res) => {
+	console.log(req.body)
+	const id = req.params.id - 1;
+	pokemon[id] = req.body;
+	res.redirect("/pokemon/");
+});
 
 // DELETE Route
-// Delete a pokemon then redirect to homepage or that pokemon
-app.delete('/pokemon/:id/');
+// Delete a pokemon then redirect to homepage
+app.delete('/pokemon/:id/', (req, res) => {
+
+});
 
 // decides the port that the website will be held at.
 app.listen(PORT, () => {

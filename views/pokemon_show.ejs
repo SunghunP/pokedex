@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include("partials/head.ejs") %> 
 
-<body class="show">
+<body class="show flex-cntr col">
 	<div class="pokemon-name"><h1><%= pokemonById.name %> the <%= pokemonById.misc.classification %></h1></div>
 	<div class="pokemon-container flex-cntr">
 		<div class="pokemon-body flex-cntr col">
@@ -16,6 +16,9 @@
 			<div class="pokemon abilities">Abilities: <%= pokemonById.misc.abilities.normal %></div>
 		</div>
 	</div>
+	
+	<div class="button-container"><button class="update"><a href="/pokemon/<%= pokemonById.id %>/edit">Click here to update this pokemon!</a></button></div>
+	<div class="button-container"><button class="delete"><a href="/pokemon/<%= pokemonById.id %>/delete">Click here to Delete this pokemon</a></button></div>
 	<footer class="flex-cntr"><a href="/pokemon/">Back to Pokedex</a></footer>
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %> 
+
+<body>
+	<div class="fixed flex-cntr"><h1>Edit Known Pokemon</h1></div>
+	<div class="flex-cntr">
+		<!-- we need to add by 1 to pokemonArrayIndex since we subtracted by 1 in our server.js file for the Update route-->
+		<form action="/pokemon/<%=pokemonById.id%>?_method=PUT" method="POST">
+			Id: <input type="text" name="id" value="<%= pokemonById.id %>" readonly required> <br/>
+			Name: <input type="text" name="name" placeholder="Name" required/> <br/>
+			Image Link: <input type="text" name="img" > <br/>
+			Type: <input type="text" name="type[]" placeholder="Type 1" required> <input type="text" name="type[]" placeholder="Type 2"> <br/>
+			Abilities: <input type="text" name="misc[abilities][normal][]" placeholder="Abilities" required> <input type="text" name="misc[abilities][normal][]" >  <br/>
+			Height: <input type="text" name="misc[height]" placeholder="Height" required> <br/>
+			Weight: <input type="text" name="misc[weight]" placeholder="Weight" required> <br/>
+			Classification: <input type="text" name="misc[classification]" placeholder="Description"> <br/>
+			<button type="submit" value="Update Pokemon" id="submit-button">Edit Pokemon</button>
+		</form>
+	</div>
+	<footer><a href="/pokemon/">Back To Pokedex</a></footer>
+</body>
+</html>
