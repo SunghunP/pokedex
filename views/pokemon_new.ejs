@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %> 
+<body>
+	<div class="fixed flex-cntr"><h1>Newly Discovered Pokemon Register</h1></div>
+	<div class="flex-cntr">
+		<form action="/pokemon/" method="POST">
+			Id: <input type="text" name="id" value="<%= pokemonId %>" readonly required> <br/>
+			Name: <input type="text" name="name" placeholder="Name" required/> <br/>
+			Image Link: <input type="text" name="img" > <br/>
+			Type: <input type="text" name="type[]" placeholder="Type 1" required> <input type="text" name="type[]" placeholder="Type 2"> <br/>
+			Abilities: <input type="text" name="misc[abilities][normal][]" placeholder="Abilities" required> <input type="text" name="misc[abilities][normal][]" >  <br/>
+			Height: <input type="text" name="misc[height]" placeholder="Height" required> <br/>
+			Weight: <input type="text" name="misc[weight]" placeholder="Weight" required> <br/>
+			Classification: <input type="text" name="misc[classification]" placeholder="Description"> <br/>
+			<input type="submit" value="Add Pokemon">
+		</form>
+	</div>
+	<footer><a href="/pokemon/">Back To Homepage</a></footer>
+</body>
+</html>

@@ -11,7 +11,7 @@ const pokemon = require('./models/pokemon.js'); // pulls all of the pokemon data
 ////////////////////////////////////////////////////
 // Middleware
 ////////////////////////////////////////////////////
-app.use(express.urlencoded({extended: false})); // body parser
+app.use(express.urlencoded({extended: true})); // body parser
 app.use("/static", express.static("public")); // files for public view & to use/link to other files.
 
 ////////////////////////////////////////////////////
@@ -35,12 +35,16 @@ app.get('/pokemon/', (req, res) => {
 // NEW Route
 // Displays form to create a new pokemon
 app.get('/pokemon/new/', (req, res) => {
-	
+	res.render('pokemon_new.ejs', {pokemonId : pokemon.length + 1});
 });
 
 // CREATE Route
 // Add new pokemon to database and redirects back to homepage or the newly created pokemon
-app.post('/pokemon/');
+app.post('/pokemon/', (req, res) => {
+	console.log(req.body)
+	pokemon.push(req.body)
+	res.redirect('/pokemon/');
+});
 
 // SHOW Route
 // Displays information about a pokemon
