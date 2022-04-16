@@ -2,15 +2,16 @@
 <html lang="en">
 <%- include("partials/head.ejs") %> 
 
-<body class="flex-cntr">
+<body class="flex-cntr col">
 	<div class="fixed flex-cntr"><h1>Pokedex</h1></div>
 	<div class="flex-cntr col" id="header">
 		Hello there! Welcome to the world of pokemon! <br/>
 		This world is inhabited by creatures called pokemon! <br/>
-		For some people, pokemon are pets. Other use them for battle. <br/>
+		For some people, pokemon are pets. Others use them for battle. <br/>
 		But this is a space to study pokemon and all of their unique traits.<br/>
 		<br/>
 		<button><a href="/pokemon/new/"><h3>Click me to register a new pokemon!</h3></a></button>
+		<button id="top-page"><a href="#bottom-page">Bottom of page</a></button>
 	</div>
 
 	<div class="body-container flex-cntr">
@@ -29,6 +30,7 @@
 			</a>
 			<% } %>
 		</div>
+		<button id="bottom-page"><a href="#top-page">Back to Top</a></button>
 	</div>
 </body>
 </html> 
