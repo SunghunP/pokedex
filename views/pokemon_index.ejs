@@ -3,8 +3,22 @@
 <%- include("partials/head.ejs") %> 
 
 <body>
-	<div>
-		<h1>Hi</h1>
+	<div class="body-container">
+		<div class="header">
+			<header>
+				<h1>Pokedex</h1>
+				<div>Hello there! Welcome to the world of pokemon! This world is inhabited by creatures called pokemon! For some people, pokemon are pets. Other use them for battle. But this is a space to study pokemon and all of their unique traits.</div>
+			</header>
+		</div>
+		<div class="pokedex">
+			<% allPokemon.forEach(pokemon => { %>
+			<div class="pokemon-container">
+				<div class="pokemon img"><a href="/pokemon/<%= pokemon %>"><img src="<%= pokemon.img %>"/></a></div>
+				<div class="pokemon id"><%= pokemon.id %></div>
+				<div class="pokemon name"><%= pokemon.name %></div>
+			</div>
+			<% }) %>
+		</div>
 	</div>
 </body>
 </html> 
