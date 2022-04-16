@@ -1,4 +1,103 @@
 :root {
-	--var-color: ;
-	--var-bg-color: ;
+	--main-color: #d5d5d5;
+	--bg-color: #5d5d5d;
+	--border-color: #e93031;
+	--body-bg-color: #ffffff;
+	--show-color: #626262b8;
+	--show-color-compliment: #ADADAD;
+}
+
+body {
+	margin: auto;
+	background-color: var(--bg-color);
+}
+
+h1 {
+	height: 100%;
+	text-align: center;
+	margin: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+div {
+	font-size: 30px;
+}
+
+div.fixed {
+	height: auto;
+	width: 100%;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--main-color);
+}
+
+.flex-cntr {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-cntr.col {
+	flex-direction: column;
+}
+
+.body-container {
+	background-color: var(--body-bg-color);
+	width: 75%;
+}
+
+#header {
+	background-color: var(--main-color);
+	padding: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+
+#pokemon-img a img {
+	width: 100%;
+	max-width: 230px;
+	max-height: 230px;
+}
+
+#pokemon-container {
+	width: 300px;
+	height: 320px;
+	margin: 15px;
+	padding: 15px;
+	border: solid var(--border-color) 10px;
+	border-left: solid var(--border-color) 15px;
+	border-right: solid var(--border-color) 15px;
+	border-radius: 30px;
+}
+
+#pokemon-id {
+	margin-top: auto;
+}
+
+/* For the show page */
+body.show {
+	background-color: var(--show-color-compliment);
+}
+
+.pokemon-name {
+	width: 100%;
+	height: auto;
+	background-color: var(--show-color);
+	margin-bottom: 40px;
+}
+
+.pokemon-container {
+	width: 100%;
+	height: auto;
+}
+
+.pokemon-body {
+	background-color: var(--body-bg-color);
+	width: 100%;
 }
