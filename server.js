@@ -44,7 +44,14 @@ app.post('/pokemon/');
 
 // SHOW Route
 // Displays information about a pokemon
-app.get('/pokemon/:id/');
+app.get('/pokemon/:id/', (req, res) => {
+	// I have to subtract one to the given id because in pokemon_index.ejs 
+	// I added 1 to the href of the a tag to get to the selected pokemon
+	// since I wanted the link of the pokemon to match the id of the pokemon.
+	const id = req.params.id - 1;
+	// res.send(pokemon[id]);
+	res.render('pokemon_show.ejs', {pokemonById : pokemon[id]});
+});
 
 // EDIT Route
 // Display Edit form for one Pokemon
