@@ -3,8 +3,17 @@
 <%- include("partials/head.ejs") %> 
 
 <body>
-	<div>
-		<h1>Hi</h1>
+	<div pokemon container>
+		<div class="pokmon name"><h1><%= pokemonById.name %> the <%= pokemonById.misc.classification %></h1></div>
+		<div class="pokemon img"><img src="<%= pokemonById.img %>" alt="A picture of <%= pokemonById.name %>"/></div>
+		<!-- ternary operator to write types if the length of the type array is  greater than 1 and type if not. -->
+		<div class="pokemon type"><%= type = (pokemonById.type.length === 1) ? `Type: ${pokemonById.type}` : `Types: ${pokemonById.type[0]}, ${pokemonById.type[1]}`%></div>
+		<div class="pokemon data">
+			<div class="pokemon height">Height: <%= pokemonById.misc.height %></div>
+			<div class="pokemon weight">Weight: <%= pokemonById.misc.weight %>lbs</div>
+		</div>
+		<div class="pokemon abilities">Abilities: <%= pokemonById.misc.abilities.normal %></div>
 	</div>
+	<footer><a href="/pokemon/">Back to Pokedex</a></footer>
 </body>
 </html>
