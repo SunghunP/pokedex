@@ -5,8 +5,7 @@
 <body>
 	<div class="fixed flex-cntr"><h1>Edit Known Pokemon</h1></div>
 	<div class="flex-cntr">
-		<!-- we need to add by 1 to pokemonArrayIndex since we subtracted by 1 in our server.js file for the Update route-->
-		<form action="/pokemon/<%=pokemonById.id%>?_method=PUT" method="POST">
+		<form action="/pokemon/<%= id %>?_method=PUT" method="POST">
 			Id: <input type="text" name="id" value="<%= pokemonById.id %>" readonly required> <br/>
 			Name: <input type="text" name="name" placeholder="Name" required/> <br/>
 			Image Link: <input type="text" name="img" > <br/>

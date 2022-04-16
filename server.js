@@ -44,33 +44,35 @@ app.get('/pokemon/new/', (req, res) => {
 // CREATE Route
 // Add new pokemon to database and redirects back to homepage or the newly created pokemon
 app.post('/pokemon/', (req, res) => {
-	pokemon.push(req.body)
+	pokemon.push(req.body);
 	res.redirect('/pokemon/');
 });
 
 // SHOW Route
 // Displays information about a pokemon
 app.get('/pokemon/:id/', (req, res) => {
-	// I have to subtract one to the given id because in pokemon_index.ejs 
-	// I added 1 to the href of the a tag to get to the selected pokemon
-	// since I wanted the link of the pokemon to match the id of the pokemon.
-	const id = req.params.id - 1;
+	const id = req.params.id;
 	// res.send(pokemon[id]);
-	res.render('pokemon_show.ejs', {pokemonById : pokemon[id]});
+	res.render('pokemon_show.ejs', {
+		pokemonById : pokemon[id],
+		id : id,
+	});
 });
 
 // EDIT Route
 // Display Edit form for one Pokemon
 app.get('/pokemon/:id/edit', (req, res) => {
-	const id = req.params.id - 1;
-	res.render('pokemon_edit.ejs', {pokemonById : pokemon[id]});
+	const id = req.params.id;
+	res.render('pokemon_edit.ejs', {
+		pokemonById : pokemon[id],
+		id : id
+	});
 });
 
 // UPDATE Route
 // Update a particular pokemon's data then redirect to homepage or that pokemon
 app.put('/pokemon/:id/', (req, res) => {
-	console.log(req.body)
-	const id = req.params.id - 1;
+	const id = req.params.id;
 	pokemon[id] = req.body;
 	res.redirect("/pokemon/");
 });
@@ -78,7 +80,9 @@ app.put('/pokemon/:id/', (req, res) => {
 // DELETE Route
 // Delete a pokemon then redirect to homepage
 app.delete('/pokemon/:id/', (req, res) => {
-
+	const id = req.params.id 
+	pokemon.splice(id, 1)
+	res.redirect('/pokemon/')
 });
 
 // decides the port that the website will be held at.

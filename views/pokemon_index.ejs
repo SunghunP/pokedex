@@ -18,11 +18,11 @@
 		<div class="flex-cntr" id="pokedex">
 			<!-- i want the index of the pokemon on the webpage to match the id to make finding the pokemon intuitive -->
 			<% for( let pokemon in allPokemon ) { %>
-			<a href="/pokemon/<%= allPokemon[pokemon].id %>" ></a>
+			<a href="/pokemon/<%= pokemon %>" ></a>
 			<div class="flex-cntr col" id="pokemon-container">
 					
 				<div id="pokemon-img">
-					<a style="text-decoration: none; color: black;" href="/pokemon/<%= allPokemon[pokemon].id %>"><img src="<%= allPokemon[pokemon].img %>"/>
+					<a style="text-decoration: none; color: black;" href="/pokemon/<%= pokemon %>"><img src="<%= allPokemon[pokemon].img %>"/>
 				</div>
 				<div id="pokemon-id"><%= allPokemon[pokemon].id %></div>
 				<div id="pokemon-name"><%= allPokemon[pokemon].name %></div>
