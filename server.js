@@ -1,3 +1,4 @@
+// require to get environment variables
 require('dotenv').config();
 ////////////////////////////////////////////////////
 // Dependencies
@@ -5,12 +6,13 @@ require('dotenv').config();
 const express = require('express'); //setting up express 
 const app = express ();
 const PORT = process.env.PORT || 3001; // hiding the port to practice hiding environment variables
-
+const pokemon = require('./models/pokemon.js'); // pulls all of the pokemon data
 
 ////////////////////////////////////////////////////
 // Middleware
 ////////////////////////////////////////////////////
-
+app.use(express.urlencoded({extended: false})); // body parser
+app.use("/static", express.static("public")); // files for public view & to use/link to other files.
 
 ////////////////////////////////////////////////////
 // Routes
@@ -19,7 +21,7 @@ const PORT = process.env.PORT || 3001; // hiding the port to practice hiding env
 // will switch to redirect after seeing connection works. 
 app.get('/', (req, res) => {
 	res.redirect("/pokemon/");
-})
+});
 
 // RESTful Routes order 
 // INDEX - get, NEW - get, CREATE - post , SHOW - get, EDIT - get, UPDATE - put, DESTROY - Delete
@@ -27,13 +29,13 @@ app.get('/', (req, res) => {
 // INDEX Route
 // Displays homepage to see all of the pokemon
 app.get('/pokemon/', (req, res) => {
-	res.send('hi');
-})
+	res.render('pokemon_index.ejs', {allPokemon : pokemon});
+});
 
 // NEW Route
 // Displays form to create a new pokemon
 app.get('/pokemon/new/', (req, res) => {
-
+	
 });
 
 // CREATE Route
@@ -56,6 +58,7 @@ app.put('/pokemon/:id/');
 // Delete a pokemon then redirect to homepage or that pokemon
 app.delete('/pokemon/:id/');
 
+// decides the port that the website will be held at.
 app.listen(PORT, () => {
-	console.log(`You are listening on port ${PORT}`)
+	console.log(`You are listening on port ${PORT}`);
 });
