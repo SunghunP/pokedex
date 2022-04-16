@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001; // hiding the port to practice hiding env
 const pokemon = require('./models/pokemon.js'); // pulls all of the pokemon data
 const methodOverride = require("method-override"); // YOU MUST DO THIS FOR PUT METHODS!!! SPENT # HRS TRYING TO FIGURE THIS OUT 
 // IM LEAVING NOTES SO I DONT FORGET NEXT TIME - ALSO DONT FORGET TO npm i method-override!!!!
+let counter = 151
 
 ////////////////////////////////////////////////////
 // Middleware
@@ -38,7 +39,9 @@ app.get('/pokemon/', (req, res) => {
 // NEW Route
 // Displays form to create a new pokemon
 app.get('/pokemon/new/', (req, res) => {
-	res.render('pokemon_new.ejs', {pokemonId : pokemon.length + 1});
+	// A simple way to count the number of pokemon and use it as the id value
+	counter += 1
+	res.render('pokemon_new.ejs', {pokemonId : counter});
 });
 
 // CREATE Route
