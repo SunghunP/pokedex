@@ -76,6 +76,7 @@ app.get('/pokemon/:id/edit', (req, res) => {
 // Update a particular pokemon's data then redirect to homepage or that pokemon
 app.put('/pokemon/:id/', (req, res) => {
 	const id = req.params.id;
+	console.log(req.body)
 	pokemon[id] = req.body;
 	res.redirect("/pokemon/");
 });
@@ -92,3 +93,9 @@ app.delete('/pokemon/:id/', (req, res) => {
 app.listen(PORT, () => {
 	console.log(`You are listening on port ${PORT}`);
 });
+
+// How to copy & edit an object without losing the structure and data of the object. 
+// 1. Make a copy of the object at PokemonArray at the index and assign it to a new variable (...pokemon[req.params.id])
+// 2. verify that req.body is structured in the format that matches what your new object has.
+// 3. use object .assign to add req.body to our object copy. 
+// 4. Update pokemonArray[req.params.id] to the new object
