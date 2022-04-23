@@ -7,7 +7,7 @@
 	<div class="pokemon-container flex-cntr">
 		<div class="pokemon-body flex-cntr col">
 			<div class="pokemon img"><img src="<%= pokemonById.img %>" alt="A picture of <%= pokemonById.name %>"/></div>
-			<!-- ternary operator to write types if the length of the type array is  greater than 1 and type if not. -->
+			<!-- ternary operator to write types or type depending on length of array. -->
 			<div class="pokemon type"><%= type = (pokemonById.type.length === 1) ? `Type: ${pokemonById.type}` : `Types: ${pokemonById.type[0]}, ${pokemonById.type[1]}`%></div>
 			<div class="pokemon data">
 				<div class="pokemon height">Height: <%= pokemonById.misc.height %></div>

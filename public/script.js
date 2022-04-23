@@ -12,7 +12,7 @@ function disableEmptyInput () {
 		// the ! operator will make "" become true therefore running the code block. 
 		// "" = false, !"" = true
 		if (!input.value) {
-			// if the value is empty meaning no user input then we disable the input 
+			// if the value is empty meaning no user input then we disable that input 
 			input.setAttribute("disabled", "disabled");
 		}
 	});
